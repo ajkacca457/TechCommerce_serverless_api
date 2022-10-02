@@ -7,7 +7,7 @@ const airtable= new Airtable({apiKey:process.env.AIRTABLE_API_KEY})
 
 exports.handler=async(event,context)=> {
     return {
-        statuCode:200,
+        statusCode:200,
         body:"hello it is working"
     }
 
