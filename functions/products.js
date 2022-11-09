@@ -41,10 +41,15 @@ exports.handler=async (event, context)=> {
         let {records}= await airtable.list();
         let products= records.map(item=> {
             let {id, fields}= item;
-            let {Price, Category, Description, Company, Name, Image, Rating}= fields;
-    
+            let {Price, Category, Description, Company, Name, Image, Rating,Featured, FreeShipping,Stock}= fields;
+            if(!Featured){
+                Featured=false
+            }
+            if(!FreeShipping){
+                FreeShipping=false
+            }
             return {
-                id, Price, Category, Description, Company, Name, Image, Rating 
+                id, Price, Category, Description, Company, Name, Image, Rating,Featured,FreeShipping,Stock 
             }
         })
         return {
