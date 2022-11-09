@@ -14,11 +14,17 @@ exports.handler=async (event, context)=> {
             let product=await airtable.retrieve(id);
             if(product.error) {
                 return {
+                    headers: {
+                        'ACCESS-CONTROL-ALLOW-ORIGIN':'*'
+                    },
                     statusCode:200,
                     body: `no product found with ${id}`
                 }                
             }
             return {
+                headers: {
+                    'ACCESS-CONTROL-ALLOW-ORIGIN':'*'
+                },
                 statusCode:200,
                 body: JSON.stringify(product)
             }
@@ -42,6 +48,9 @@ exports.handler=async (event, context)=> {
             }
         })
         return {
+            headers: {
+                'ACCESS-CONTROL-ALLOW-ORIGIN':'*'
+            },
             statusCode:200,
             body: JSON.stringify(products)
         }   
